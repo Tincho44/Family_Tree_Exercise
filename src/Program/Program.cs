@@ -24,6 +24,8 @@ namespace Program
             n3.AddChildren(n6);
             n3.AddChildren(n7);
 
+            Console.WriteLine("Imprime" + n7);
+
             // visitar el árbol aquí
         }
     }
