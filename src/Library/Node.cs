@@ -4,13 +4,13 @@ using System;
 
 namespace Library
 {
-    public class Node<T>
+    public class Node
     {
         private int number;
 
-        public T Value { get; set; }
+        public Persona person; 
 
-        public List<Node<T>> children = new List<Node<T>>();
+        public List<Node> children = new List<Node>();
 
         public int Number {
             get
@@ -19,19 +19,20 @@ namespace Library
             }
         }
 
-        public ReadOnlyCollection<Node<T>> Children { 
+        public ReadOnlyCollection<Node> Children { 
             get
             {
                 return this.children.AsReadOnly();
             }
         }
 
-        public Node(int number)
+        public Node(int number, Persona person)
         {
             this.number=number;
+            this.person= person;
         }
 
-        public void AddChildren(Node<T> n)
+        public void AddChildren(Node n)
         {
             this.children.Add(n);
         }
