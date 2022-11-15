@@ -7,26 +7,38 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            Node n1 = new Node(1);
-            Node n2 = new Node(2);
-            Node n3 = new Node(3);
-            Node n4 = new Node(4);
-            Node n5 = new Node(5);
-            Node n6 = new Node(6);
-            Node n7 = new Node(7);
+
+            Persona Pepito = new Persona("Pepe", 44);
+            Persona Pepita = new Persona("Pepita",42);
+            Persona Pepito2 = new Persona("Pepe2", 34);
+            Persona Pepita2 = new Persona("Pepita2",32);
+            Persona Pepito3 = new Persona("Pepe3", 24);
+            Persona Pepita3 = new Persona("Pepita3",22);
+            Persona Pepito4 = new Persona("Pepe4", 14);
+            Persona Pepita4 = new Persona("Pepita4",12);
+
+
+            Node n1 = new Node(1, Pepito);
+            Node n2 = new Node(2,Pepita);
+            Node n3 = new Node(3, Pepito);
+            Node n4 = new Node(4,Pepita);            
+            Node n5 = new Node(5, Pepito);
+            Node n6 = new Node(6,Pepita);
+            Node n7 = new Node(7, Pepito);
+            Node n8  = new Node(8,Pepita);   
+
+            //Ejemplo demostrativo, claramente las edades no estan muy correlacionadas
 
             n1.AddChildren(n2);
-            n1.AddChildren(n3);
 
-            n2.AddChildren(n4);
-            n2.AddChildren(n5);
+            Visitor SumaEdades = new AgesSum();
+            Visitor HijoViejo = new HijoGrande();
+            Visitor NombreLargo = new NombreLargo();
 
-            n3.AddChildren(n6);
-            n3.AddChildren(n7);
+            n1.Accept(SumaEdades);
+            n1.Accept(HijoViejo);
+            n1.Accept(NombreLargo);
 
-            Console.WriteLine("Imprime" + n7);
-
-            // visitar el árbol aquí
         }
     }
 }

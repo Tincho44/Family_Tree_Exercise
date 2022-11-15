@@ -43,5 +43,9 @@ namespace Library
                 this.edad = value;
             }
         }
+        public void Accept(Visitor visitor)
+        {
+            visitor.VisitPerson(this);
+        }
     }
 }
