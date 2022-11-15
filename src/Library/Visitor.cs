@@ -4,17 +4,14 @@ using System;
 
 namespace Library
 {
-    public abstract class Visitor<T>
+    public abstract class Visitor
     {
-        public string visitor
-        {
-            get
-            {
-                return this.visitor;
-            }
-        }
+        public abstract void VisitNode(Node node);
 
-        public abstract void Visitar(Node node);
+        public abstract void VisitPerson(Persona person);
+
+        public abstract string GetResult();
 
     }
 }
+
