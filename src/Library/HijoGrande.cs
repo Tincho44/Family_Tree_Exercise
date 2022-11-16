@@ -2,17 +2,17 @@ using System;
 
 namespace Library
 {
-    public class HijoGrande : Visitor
+    public class HijoGrande : IVisitor
     {
-        private string NamePersonResult { get; set; }
-        private int AgePersonResult { get; set; }
+        private string NombrePersona { get; set; }
+        private int EdadPersona { get; set; }
 
         public HijoGrande()
         {
-            this.NamePersonResult = "";
-            this.AgePersonResult = 0;
+            this.NombrePersona = "";
+            this.EdadPersona = 0;
         }
-        public override void VisitNode(Node node)
+        public void VisitNode(Node node)
         {   
 
             foreach (Node n in node.Children)
@@ -22,10 +22,10 @@ namespace Library
             }
         }
 
-        public override void VisitPerson(Persona person)
+        public void VisitPerson(Persona person)
         {
             int age = person.Edad;
-            if (this.AgePersonResult < age)
+            if (this.EdadPersona < age)
             {
                 this.ChangeResult(person.nombre,age);
             }
@@ -35,13 +35,14 @@ namespace Library
         public void ChangeResult(string name, int age)
         {
 
-            this.AgePersonResult = age;
-            this.NamePersonResult = name;
+            this.EdadPersona = age;
+            this.NombrePersona = name;
         }
-        public override string GetResult()
+        public string GetResult()
         {
-            string text = $"Nombre: {this.NamePersonResult}, Edad: {this.AgePersonResult}";
-            return text;
+            string datos = $"Nombre: {this.NombrePersona}, Edad: {this.EdadPersona}";
+            return datos;
         }
     }
 }
+

@@ -43,7 +43,7 @@ namespace Library
                 this.edad = value;
             }
         }
-        public void Accept(Visitor visitor)
+        public void Accept(IVisitor visitor)
         {
             visitor.VisitPerson(this);
         }

@@ -5,12 +5,12 @@ using System;
 
 namespace Library
 {
-    public class AgesSum : Visitor
+    public class AgesSum : IVisitor
 
     {
         public int Result { get; set; }
 
-        public override void VisitNode(Node node)
+        public void VisitNode(Node node)
         {   
 
             node.person.Accept(this);
@@ -21,18 +21,18 @@ namespace Library
             }
         }
 
-        public override void VisitPerson(Persona person)
+        public void VisitPerson(Persona person)
         {
             this.ChangeResult(person.Edad);
         }
 
+        public string GetResult()
+        {
+            return this.Result.ToString();
+        }
         public void ChangeResult(int age)
         {
             this.Result = Result + age;
-        }
-        public override string GetResult()
-        {
-            return this.Result.ToString();
         }
 
     }
