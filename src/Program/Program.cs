@@ -41,9 +41,9 @@ namespace Program
 
             n7.AddChildren(n8);
 
-            Visitor SumaEdades = new AgesSum();
-            Visitor HijoViejo = new HijoGrande();
-            Visitor NombreLargo = new NombreLargo();
+            IVisitor SumaEdades = new AgesSum();
+            IVisitor HijoViejo = new HijoGrande();
+            IVisitor NombreLargo = new NombreLargo();
 
             n1.Accept(SumaEdades);
             n1.Accept(HijoViejo);
@@ -54,7 +54,7 @@ namespace Program
             Console.WriteLine("Sumar todas las edades -> " + SumaEdades.GetResult());
             // suma las edades de los nodos
             Console.WriteLine("Hijo con nombre mas largo -> " + NombreLargo.GetResult());
-            //Deberia de devolverme pepita 490
+            //Deberia de devolverme pepita490
 
         }
     }
