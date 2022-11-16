@@ -37,7 +37,7 @@ namespace Library
             this.children.Add(n);
         }
         
-        public void Accept(Visitor visitor)
+        public void Accept(IVisitor visitor)
         {
 
             visitor.VisitNode(this);

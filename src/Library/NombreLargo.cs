@@ -5,16 +5,16 @@ using System.Collections.ObjectModel;
 
 namespace Library
 {
-    public class NombreLargo : Visitor
+    public class NombreLargo : IVisitor
     {
-        private string NamePersonResult { get; set; }
+        private string NombrePersona { get; set; }
 
         public NombreLargo()
         {
-            this.NamePersonResult = "";
+            this.NombrePersona = "";
         }
 
-        public override void VisitNode(Node node)
+        public void VisitNode(Node node)
         {
 
             node.person.Accept(this);
@@ -25,10 +25,13 @@ namespace Library
             }
         }
 
-        public override void VisitPerson(Persona person)
+        public void VisitPerson(Persona person)
         {
             string name = Regex.Replace(person.Nombre, @"\s", "");
-            string nameResult = Regex.Replace(this.NamePersonResult, @"\s", "");
+            string nameResult = Regex.Replace(this.NombrePersona, @"\s", "");
+
+            // Regex es una serie de simbolos, se usa system para regular expressions para habilitarla
+            // Sinceremente esta parte la saque de un colega que tiene mas experiencia
             
             if (nameResult.Length < name.Length)
             {
@@ -39,11 +42,11 @@ namespace Library
 
         public void ChangeResult(string name)
         {
-            this.NamePersonResult = name;
+            this.NombrePersona = name;
         }
-        public override string GetResult()
+        public string GetResult()
         {
-            return this.NamePersonResult;
+            return this.NombrePersona;
         }
     }
 }
